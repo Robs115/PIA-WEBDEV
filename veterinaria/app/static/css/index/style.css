@@ -1,0 +1,219 @@
+body {
+    background-color: rgb(240, 240, 240);
+}
+#logo {
+    justify-content: right;
+    text-align: right;
+
+}
+
+#logo img {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+#nombreempresa {
+    padding: 10px;
+    justify-content: center;
+    text-align: left;
+
+}
+
+
+#indice {
+    justify-content: center;
+    align-content: center;
+}
+#indice ul {
+    font-size: 18px;
+    padding: 15px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    list-style: none;
+    gap: 15px;
+
+}
+
+#indice ul li a {
+    
+    transition: color .5s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+    color:rgb(169, 169, 169);
+}
+
+#indice ul li a:hover {
+    /*color:black;
+    */
+    color:rgb(55, 144, 144);
+}
+
+i {
+    width: 20px;
+    height: 20px;
+}
+
+#Pres {
+    display: flex;
+    align-items: center;
+}
+#textoPres {
+    
+    padding:20px;
+    border-radius: 5%;
+    background-color: white;
+    box-shadow:0px 0px 0px grey;
+    height: 350px ;
+}
+
+#textoPres button{
+    background-color: rgb(55, 144, 144);
+
+}
+#textoPres a {
+    color:rgb(55, 144, 144);
+}
+
+#imgPres {
+    width:90%;
+    border-radius: 5%;
+    height: 650px;
+    overflow: hidden;
+
+    
+    
+}
+
+#imgPres img {
+     width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+#consultas, #vacunacion, #peluqueria{
+    background-color: white;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+#elegirnos {
+    background-color: white;
+    border-radius: 7px;
+    padding: 20px;
+    height: 220px;
+}
+
+
+
+#tituloServ {
+    
+    gap:10px;
+}
+
+#galeria {
+    gap: 2px;
+    overflow: hidden;
+}
+
+#foto1 img {
+    height: 160px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 5%;    
+
+
+}
+
+#foto2 img {
+    height: 300px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 5%;    
+
+}
+#foto3 img {
+    height: 160px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 5%;    
+
+}
+#foto4 img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 5%;    
+
+}
+
+#galeria div {
+    height: px;
+    
+    
+    
+    
+}
+#contacto {
+    gap:5px;
+}
+
+#formcontacto button {
+    background-color:rgb(55, 144, 144); 
+}
+
+#formcontacto a {
+    color: rgb(55, 144, 144);
+
+}
+
+
+#formcontacto {
+    border-radius: 5%;
+    background-color: white;
+    padding: 20px;
+    height:600px;
+
+}
+
+#visitanos {
+    background-color: white;
+    border-radius: 5%;
+    padding: 15px;
+    height:500px;
+}
+
+#visitanos ul {
+    list-style: none;
+    display: flex;
+    gap:9px;
+}
+
+#logoBandit, #logoVacuna, #logoTijeras,#logoDra {
+    display: flex;        
+    align-items: center;  
+    gap: 10px;            
+}
+
+#pregFrecuentes {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5%;
+}
+
+#cotizaciones {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5%;
+    height: 300px;
+
+}
+
+#botonTotal button {
+    background-color:rgb(55, 144, 144);  ;
+}
