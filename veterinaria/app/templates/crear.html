@@ -10,31 +10,94 @@
         Cita_Veterinaria.objects.create(nombre=nombre_dueño, nombre_mascota=nombre_mascota, especie=especie, fecha_cita=fecha_cita, hora_cita=hora_cita, motivo=motivo, estatus=estatus, descripcion=descripcion)
         return redirect('listar')
     return render(request, 'crear.html)
+
+    (para saber los name de los input)
 -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear</title>
+    <link rel="stylesheet" href="{% static 'css/crear.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
 </head>
 <body>
+    <main class="container m-5">
+    <h1 class="text-center mb-4 fw-bold color">Crear Cita Veterinaria</h1>
+    
     <form method="POST">
         {% csrf_token %}
-        <h1>Crear cita</h1>
-        <!--Nombredueño-->
-        <div>Nombre dueño: <input name="nombre_dueño" type="text"></div>
-        <div>Nombre mascota: <input name="nombre_mascota" type="text"></div>
-        <div>Especie: <input name="especie" type="text"></div>
-        <div>Fecha cita: <input type="date" name="fecha_cita" id="fecha_cita"></div>
-        <div>Hora cita: <input type="time" name="hora_cita" id="hora_cita"></div>
-        <div>Motivo: <input type="text" name="motivo"></div>
-        <div>Estatus: <input type="text" name="estatus"></div>
-        <div>Descripcion: <input type="text" name="descripcion"></div>
-        
-        <button type="submit">Aceptar</button>
 
+        <div class="row g-3">
+    
+        <div class="col-md-6">
+            <label for="nombre_dueño" class="form-label fw-semibold">Nombre del dueño</label>
+            <input type="text" name="nombre_dueño" id="nombre_dueño" class="form-control" pattern="[A-Za-z\s]+" placeholder="Ej. Edgar" required>
+        </div>
+
+    
+        <div class="col-md-6">
+            <label for="nombre_mascota" class="form-label fw-semibold">Nombre de la mascota</label>
+            <input type="text" name="nombre_mascota" id="nombre_mascota" class="form-control" pattern="[A-Za-z\s]+" placeholder="Ej. Rocky" required>
+        </div>
+
+        <!-- Especie -->
+        <div class="col-md-6">
+            <label for="especie" class="form-label fw-semibold">Especie</label>
+            <input type="text" name="especie" id="especie" class="form-control" pattern="[A-Za-z\s]+" placeholder="Ej. Perro, Gato" required>
+        </div>
+
+        <!-- Fecha -->
+        <div class="col-md-3">
+            <label for="fecha_cita" class="form-label fw-semibold">Fecha de la cita</label>
+            <input type="date" name="fecha_cita" id="fecha_cita" class="form-control" required>
+        </div>
+
+        <!-- Hora -->
+        <div class="col-md-3">
+            <label for="hora_cita" class="form-label fw-semibold">Hora de la cita</label>
+            <input type="time" name="hora_cita" id="hora_cita" class="form-control" required>
+        </div>
+
+        <!-- Estatus -->
+        <div class="col-md-4">
+            <label for="estatus" class="form-label fw-semibold">Estatus</label>
+            <select name="estatus" id="estatus" class="form-select">
+            <option value="Pendiente" selected>Pendiente</option>
+            <option value="Realizada">Realizada</option>
+            </select>
+        </div>
+
+        <!-- Descripción -->
+        <div class="col-md-8">
+            <label for="descripcion" class="form-label fw-semibold">Descripción</label>
+            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Detalles de la cita">
+        </div>
+
+        <!-- Servicio (Motivo) -->
+        <div class="col-md-6">
+            <label for="motivo" class="form-label fw-semibold">Servicio (Motivo)</label>
+            <select name="motivo" id="motivo" class="form-select">
+            {% for servicios in servicio %}
+                <option value="{{ servicios.id }}">{{ servicios.nombre }}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <!-- Botón -->
+        <div class="col-12 text-center mt-4">
+            <button type="submit" class="btn btn-success px-5 py-2 fw-semibold shadow-sm">
+            <i class="fa-solid fa-calendar-check me-2"></i> Aceptar
+            </button>
+        </div>
+        </div>
     </form>
+    </main>
+
+        
     
 </body>
 </html>

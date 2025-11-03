@@ -19,12 +19,22 @@ def crear_Cita_Veterinaria(request):
         especie = request.POST['especie']
         fecha_cita = request.POST['fecha_cita']
         hora_cita = request.POST['hora_cita']
-        motivo = request.POST['motivo']
+        
         estatus = request.POST['estatus']
         descripcion = request.POST['descripcion']
+        motivo_id = request.POST['motivo']
+        motivo = Servicio.objects.get(id=motivo_id)
         Cita_Veterinaria.objects.create(nombre_dueño=nombre_dueño, nombre_mascota=nombre_mascota, especie=especie, fecha_cita=fecha_cita, hora_cita=hora_cita, motivo=motivo, estatus=estatus, descripcion=descripcion)
         return redirect('listar')
-    return render(request, 'crear.html')
+
+
+    
+    listar_servicio = Servicio.objects.all()
+    contexto = {
+        'servicio': listar_servicio
+    }
+    
+    return render (request, 'crear.html', contexto)
 
 def editar_Cita_Veterinaria(request, id):
     Cita_Veterinaria = get_object_or_404(Cita_Veterinaria, id=id)
