@@ -22,7 +22,7 @@ def crear_Cita_Veterinaria(request):
         motivo = request.POST['motivo']
         estatus = request.POST['estatus']
         descripcion = request.POST['descripcion']
-        Cita_Veterinaria.objects.create(nombre=nombre_dueño, nombre_mascota=nombre_mascota, especie=especie, fecha_cita=fecha_cita, hora_cita=hora_cita, motivo=motivo, estatus=estatus, descripcion=descripcion)
+        Cita_Veterinaria.objects.create(nombre_dueño=nombre_dueño, nombre_mascota=nombre_mascota, especie=especie, fecha_cita=fecha_cita, hora_cita=hora_cita, motivo=motivo, estatus=estatus, descripcion=descripcion)
         return redirect('listar')
     return render(request, 'crear.html')
 

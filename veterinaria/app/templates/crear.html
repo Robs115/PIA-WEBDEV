@@ -1,0 +1,40 @@
+<!--if request.method == 'POST':
+        nombre_dueño = request.POST['nombre_dueño']
+        nombre_mascota = request.POST['nombre_mascota']
+        especie = request.POST['especie']
+        fecha_cita = request.POST['fecha_cita']
+        hora_cita = request.POST['hora_cita']
+        motivo = request.POST['motivo']
+        estatus = request.POST['estatus']
+        descripcion = request.POST['descripcion']
+        Cita_Veterinaria.objects.create(nombre=nombre_dueño, nombre_mascota=nombre_mascota, especie=especie, fecha_cita=fecha_cita, hora_cita=hora_cita, motivo=motivo, estatus=estatus, descripcion=descripcion)
+        return redirect('listar')
+    return render(request, 'crear.html)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <h1>Crear cita</h1>
+        <!--Nombredueño-->
+        <div>Nombre dueño: <input name="nombre_dueño" type="text"></div>
+        <div>Nombre mascota: <input name="nombre_mascota" type="text"></div>
+        <div>Especie: <input name="especie" type="text"></div>
+        <div>Fecha cita: <input type="date" name="fecha_cita" id="fecha_cita"></div>
+        <div>Hora cita: <input type="time" name="hora_cita" id="hora_cita"></div>
+        <div>Motivo: <input type="text" name="motivo"></div>
+        <div>Estatus: <input type="text" name="estatus"></div>
+        <div>Descripcion: <input type="text" name="descripcion"></div>
+        
+        <button type="submit">Aceptar</button>
+
+    </form>
+    
+</body>
+</html>
