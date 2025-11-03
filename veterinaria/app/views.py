@@ -5,6 +5,9 @@ def index(request):
     citas = Cita_Veterinaria.objects.all()
     return render(request, 'index.html')
 
+def login(request):
+    return render(request, 'login.html')
+
 def listar_Cita_Veterinaria(request):
     citas = Cita_Veterinaria.objects.all()
     return render(request, 'listar.html', {'citas': citas})
