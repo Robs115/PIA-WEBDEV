@@ -13,6 +13,9 @@
         <h1>Lista de Citas Veterinarias</h1>
         <p>Bienvenido, <b>{{ user.username }}</b> 🐾</p>
         <a class="btn btn-primary mb-3" href="{% url 'crear' %}">➕ Nueva Cita</a>
+        {% if perms.app.delete_citaveterinaria %}
+                <a href="{% url 'crearservicio' %}" class="btn btn-primary mb-3">➕ Crear Servicio</a>
+        {% endif %}
         
         <table class="table table-hover align-middle">
             <thead>

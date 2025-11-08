@@ -39,6 +39,8 @@ def crear_Cita_Veterinaria(request):
     
     return render (request, 'crer.html', contexto)
 
+
+
 @login_required
 def editar_Cita_Veterinaria(request, id):
     cita_veterinaria = get_object_or_404(Cita_Veterinaria, id=id)
@@ -68,3 +70,19 @@ def eliminar_Cita_Veterinaria(request, id):
     cita = get_object_or_404(Cita_Veterinaria, id=id)
     cita.delete()
     return redirect('listar')
+
+@permission_required('app.delete_citaveterinaria', raise_exception=True)
+def crear_servicio(request):
+    if request.method == 'POST':
+        nombre = request.POST['nombre']
+        descripcion = request.POST['descripcion']
+        precio = request.POST['precio']
+
+        Servicio.objects.create(
+            nombre=nombre,
+            descripcion=descripcion,
+            precio=precio
+        )
+        return redirect('listar')  # Redirige a una lista de servicios (la crearás después)
+
+    return render(request, 'crearservicio.html')
