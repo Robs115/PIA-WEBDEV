@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+    <link rel="stylesheet" href="{% static 'css/editar.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<body>
+    <main class="container m-5">
+    <h1 class="text-center mb-4 fw-bold color">Editar Cita Veterinaria</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="row g-3">
+    
+        <div class="col-md-6">
+            <label for="nombre_dueño" class="form-label fw-semibold">Nombre del dueño</label>
+            <input type="text" name="nombre_dueño" id="nombre_dueño" class="form-control" value="{{ cita_veterinaria.nombre_dueño }}" pattern="[A-Za-z\s]+" placeholder="Ej. Edgar" required>
+        </div>
+
+    
+        <div class="col-md-6">
+            <label for="nombre_mascota" class="form-label fw-semibold">Nombre de la mascota</label>
+            <input type="text" name="nombre_mascota" id="nombre_mascota" class="form-control" value="{{ cita_veterinaria.nombre_mascota }}" pattern="[A-Za-z\s]+" placeholder="Ej. Rocky" required>
+        </div>
+
+        <!-- Especie -->
+        <div class="col-md-6">
+            <label for="especie" class="form-label fw-semibold">Especie</label>
+            <input type="text" name="especie" id="especie" class="form-control" value="{{ cita_veterinaria.especie }}" pattern="[A-Za-z\s]+" placeholder="Ej. Perro, Gato" required>
+        </div>
+
+        <!-- Fecha -->
+        <div class="col-md-3">
+            <label for="fecha_cita" class="form-label fw-semibold">Fecha de la cita</label>
+            <input type="date" name="fecha_cita" id="fecha_cita" class="form-control" value="{{ cita_veterinaria.fecha_cita|date:'Y-m-d' }}" required>
+        </div>
+
+        <!-- Hora -->
+        <div class="col-md-3">
+            <label for="hora_cita" class="form-label fw-semibold">Hora de la cita</label>
+            <input type="time" name="hora_cita" id="hora_cita" class="form-control" value="{{ cita_veterinaria.hora_cita|time:'H:i' }}" required>
+        </div>
+
+        <!-- Estatus -->
+        <div class="col-md-4">
+            <label for="estatus_cita" class="form-label fw-semibold" >Estatus</label>
+            <select name="estatus_cita" id="estatus_cita" class="form-select" >
+                <option value="Pendiente" {% if cita_veterinaria.estatus_cita == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                <option value="Realizada" {% if cita_veterinaria.estatus_cita == 'Realizada' %}selected{% endif %}>Realizada</option>
+            </select>
+        </div>
+
+        <!-- Descripción -->
+        <div class="col-md-8">
+            <label for="descripcion" class="form-label fw-semibold">Descripción</label>
+            <input type="text" name="descripcion" id="descripcion" class="form-control"  value="{{ cita_veterinaria.descripcion }}" placeholder="Detalles de la cita">
+        </div>
+
+        <!-- Servicio (Motivo) -->
+        <div class="col-md-6">
+            <label for="servicio" class="form-label fw-semibold">Servicio (Motivo)</label>
+            <select name="servicio" id="servicio" class="form-select">
+            {% for servicios in servicio %}
+                <option value="{{ servicios.id }}" {% if servicios.id == cita_veterinaria.servicio.id %}selected{% endif %}>{{ servicios.nombre }}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <!-- Botón -->
+        <div class="col-12 text-center mt-4">
+            <button type="submit" class="btn btn-success px-5 py-2 fw-semibold shadow-sm">
+            <i class="fa-solid fa-calendar-check me-2"></i> Aceptar
+            </button>
+        </div>
+        </div>
+    </form>
+    </main>
+
+        
+    
+</body>
+</html>

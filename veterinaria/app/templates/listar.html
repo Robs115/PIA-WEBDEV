@@ -16,8 +16,8 @@
             <th>Especie</th>
             <th>Fecha de cita</th>
             <th>Hora de cita</th>
-            <th>Motivo</th>
-            <th>Estatus</th>
+            <th>Servicio</th>
+            <th>Estatus de la cita</th>
         </tr>
         
             {% for cita in citas %}
@@ -27,8 +27,8 @@
             <td>{{ cita.especie }}</td>
             <td>{{ cita.fecha_cita }}</td>
             <td>{{ cita.hora_cita }}</td>
-            <td>{{ cita.motivo }}</td>
-            <td>{{ cita.estatus }}</td>
+            <td>{{ cita.servicio }}</td>
+            <td>{{ cita.estatus_cita }}</td>
             <td><a href="{% url 'editar' cita.id %}">Editar</a></td>
             <td>
                 {% if perms.app.delete_citaveterinaria %}

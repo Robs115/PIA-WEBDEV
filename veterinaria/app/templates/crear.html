@@ -64,8 +64,8 @@
 
         <!-- Estatus -->
         <div class="col-md-4">
-            <label for="estatus" class="form-label fw-semibold">Estatus</label>
-            <select name="estatus" id="estatus" class="form-select">
+            <label for="estatus_cita" class="form-label fw-semibold">Estatus</label>
+            <select name="estatus_cita" id="estatus_cita" class="form-select">
             <option value="Pendiente" selected>Pendiente</option>
             <option value="Realizada">Realizada</option>
             </select>
@@ -79,8 +79,8 @@
 
         <!-- Servicio (Motivo) -->
         <div class="col-md-6">
-            <label for="motivo" class="form-label fw-semibold">Servicio (Motivo)</label>
-            <select name="motivo" id="motivo" class="form-select">
+            <label for="servicio" class="form-label fw-semibold">Servicio (Motivo)</label>
+            <select name="servicio" id="servicio" class="form-select">
             {% for servicios in servicio %}
                 <option value="{{ servicios.id }}">{{ servicios.nombre }}</option>
             {% endfor %}

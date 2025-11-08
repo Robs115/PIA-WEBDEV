@@ -23,11 +23,11 @@ def crear_Cita_Veterinaria(request):
         fecha_cita = request.POST['fecha_cita']
         hora_cita = request.POST['hora_cita']
         
-        estatus = request.POST['estatus']
+        estatus_cita = request.POST['estatus_cita']
         descripcion = request.POST['descripcion']
-        motivo_id = request.POST['motivo']
-        motivo = Servicio.objects.get(id=motivo_id)
-        Cita_Veterinaria.objects.create(nombre_dueño=nombre_dueño, nombre_mascota=nombre_mascota, especie=especie, fecha_cita=fecha_cita, hora_cita=hora_cita, motivo=motivo, estatus=estatus, descripcion=descripcion)
+        servicio_id = request.POST['servicio']
+        servicio = Servicio.objects.get(id=servicio_id)
+        Cita_Veterinaria.objects.create(nombre_dueño=nombre_dueño, nombre_mascota=nombre_mascota, especie=especie, fecha_cita=fecha_cita, hora_cita=hora_cita, servicio=servicio, estatus_cita=estatus_cita, descripcion=descripcion)
         return redirect('listar')
 
 
@@ -37,24 +37,31 @@ def crear_Cita_Veterinaria(request):
         'servicio': listar_servicio
     }
     
-    return render (request, 'crear.html', contexto)
+    return render (request, 'crer.html', contexto)
 
 @login_required
 def editar_Cita_Veterinaria(request, id):
-    Cita_Veterinaria = get_object_or_404(Cita_Veterinaria, id=id)
+    cita_veterinaria = get_object_or_404(Cita_Veterinaria, id=id)
     if request.method == 'POST':
-        Cita_Veterinaria.nombre_dueño = request.POST['nombre_dueño']
-        Cita_Veterinaria.nombre_mascota = request.POST['nombre_mascota']
-        Cita_Veterinaria.especie = request.POST['especie']
-        Cita_Veterinaria.fecha_cita = request.POST['fecha_cita']
-        Cita_Veterinaria.hora_cita = request.POST['hora_cita']
-        Cita_Veterinaria.motivo = request.POST['motivo']
-        Cita_Veterinaria.estatus = request.POST['estatus']
-        Cita_Veterinaria.precio = request.POST['precio']
-        Cita_Veterinaria.descripcion = request.POST['descripcion']
-        Cita_Veterinaria.save()
+        cita_veterinaria.nombre_dueño = request.POST['nombre_dueño']
+        cita_veterinaria.nombre_mascota = request.POST['nombre_mascota']
+        cita_veterinaria.especie = request.POST['especie']
+        cita_veterinaria.fecha_cita = request.POST['fecha_cita']
+        cita_veterinaria.hora_cita = request.POST['hora_cita']
+        cita_veterinaria.servicio = Servicio.objects.get(id=request.POST['servicio'])
+        cita_veterinaria.estatus_cita = request.POST['estatus_cita']
+        cita_veterinaria.descripcion = request.POST['descripcion']
+        cita_veterinaria.save()
         return redirect('listar')
-    return render(request, 'editar.html', {'Cita_Veterinaria': Cita_Veterinaria})
+    
+    listar_servicio = Servicio.objects.all()
+    contexto = {
+        'cita_veterinaria': cita_veterinaria,
+        'servicio': listar_servicio
+    }
+    
+    return render (request, 'editar.html', contexto)
+
 
 @permission_required('app.delete_citaveterinaria', raise_exception=True)
 def eliminar_Cita_Veterinaria(request, id):
