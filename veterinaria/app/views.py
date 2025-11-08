@@ -4,7 +4,10 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 def index(request):
     citas = Cita_Veterinaria.objects.all()
-    return render(request, 'index.html')
+    servicios = Servicio.objects.all()
+    return render(request, 'index.html', {"servicios":servicios})
+
+
 
 def login(request):
     return render(request, 'login.html')
@@ -37,7 +40,7 @@ def crear_Cita_Veterinaria(request):
         'servicio': listar_servicio
     }
     
-    return render (request, 'crer.html', contexto)
+    return render (request, 'crear.html', contexto)
 
 
 
