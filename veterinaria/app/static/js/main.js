@@ -1,4 +1,6 @@
 
+
+/* Esta funcion es inutil ahora:
 function login(){
     let usuarios = ["Francisco", "Roberto", "Nelson"]
     let contrasenas = ["12345", "hamburguesa16", "contraseñaImposibleDeDescifrar"]
@@ -18,4 +20,4 @@ function login(){
         alert("That wont do");
     }
     
-}
+} */

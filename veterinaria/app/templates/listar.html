@@ -30,11 +30,22 @@
             <td>{{ cita.motivo }}</td>
             <td>{{ cita.estatus }}</td>
             <td><a href="{% url 'editar' cita.id %}">Editar</a></td>
-            <td><a href="{% url 'eliminar' cita.id %}">Eliminar</a></td>
+            <td>
+                {% if perms.app.delete_citaveterinaria %}
+                <a href="{% url 'eliminar' cita.id %}">Eliminar</a>
+                {% endif %}
+            </td>
+
             </tr>
             {% endfor %}
         
     </table>
     
+    <p>Bienvenido, {{ user.username }}!</p>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger">Cerrar sesion</button>
+    </form>
+
 </body>
 </html>
