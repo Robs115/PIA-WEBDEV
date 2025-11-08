@@ -53,6 +53,7 @@
             <select name="estatus_cita" id="estatus_cita" class="form-select" >
                 <option value="Pendiente" {% if cita_veterinaria.estatus_cita == 'Pendiente' %}selected{% endif %}>Pendiente</option>
                 <option value="Realizada" {% if cita_veterinaria.estatus_cita == 'Realizada' %}selected{% endif %}>Realizada</option>
+                <option value="Cancelada" {% if cita_veterinaria.estatus_cita == 'Cancelado' %}selected{% endif %}>Cancelada</option>
             </select>
         </div>
 
