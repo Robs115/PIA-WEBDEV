@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/index/style.css' %}">
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjmumEavWfobVNFtNJpzMzGoyuvJG7eEXBDQ&s" type="image/x-icon">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <title>PIA</title>
+    <title>VidaVet - Veterinaria profesional</title>
 </head>
 <body>
    <main class="container"> 
@@ -25,7 +26,7 @@
         
         <div id="nombreempresa" class="col-3">
             
-            <h3>Vida vet</h3>
+            <h3>VidaVet</h3>
             <p>Cuidado con cariño</p>
         </div>
 
@@ -75,32 +76,24 @@
 
         </div>
     </div>
-     <!-- Pendiente: Agregar servicios directamente desde la base de datos-->
-    <div id="tituloServ" class="row mt-5">
-        <h3>Servicios</h3>
-        <div id="consultas" class="col">
-            <div id="logoBandit">
-                <i class="fa-solid fa-bandage fa-2x"></i>
-                <h3>Consultas y Diagnóstico</h3><br>
+    <!-- Pendiente: Agregar servicios directamente desde la base de datos-->
+    <div class="row justify-content-center mt-5 pt-5">
+        {% for servicio in servicios %}
+            <div class="col-md-4 mb-4">
+                <div class="card card-servicio shadow-lg text-white">
+                    <div class="card-body">
+                        <i class="fa-solid fa-paw fa-2x mb-3 "></i>
+                        <h3 class="card-title">{{ servicio.nombre }}</h3>
+                        <p class="card-text">{{ servicio.descripcion }}</p>
+                        <span class="precio">${{ servicio.precio }}</span>
+                    </div>
+                </div>
             </div>
-            <p>Atención médica completa para detectar enfermedades, revisar signos clínicos y ofrecer tratamientos adecuados.</p>
-        </div>
-        <div id="vacunacion" class="col">
-            <div id="logoVacuna">
-                <i class="fa-solid fa-syringe fa-2x"></i><h3>Vacunación y Prevención</h3>
-            </div>
-            
-            <p>Protegemos la salud de tu mascota con esquemas de vacunación actualizados, desparasitación y medidas preventivas para evitar enfermedades.</p>
-        </div>
-        <div id="peluqueria" class="col">
-            <div id="logoTijeras">
-                <i class="fa-solid fa-scissors fa-2x"></i><h3>Peluquería y Estética</h3>
-            </div>
-
-            <p>Baños, cortes, limpieza de oídos y cuidado de uñas para que tu mascota luzca bien y se sienta cómoda. Estética profesional.</p>
-            
-        </div>
+        {% empty %}
+            <p class="text-white">No hay servicios registrados aún.</p>
+        {% endfor %}
     </div>
+
 
     <div id="equipo" class="row mt-4">
         <div id="doctora" class="col">
@@ -187,22 +180,116 @@
 
     </div>
 
+    <!-- Reseñas -->
+    <div id="resenas" class="row mt-5 justify-content-center text-center">
+        <h3 class="mb-4">🐶 Opiniones de nuestros clientes 🐱</h3>
+        <p class="text-muted mb-5">Conoce lo que dicen quienes ya confían en Vida Vet ❤️</p>
+
+
+        <div class="col-md-4 mb-4">
+            <div class="card resena shadow-lg">
+                <img src="https://i.pravatar.cc/150?img=18" class="card-img-top rounded-circle mx-auto mt-3" alt="cliente">
+                <div class="card-body">
+                    <h5 class="card-title">Francisco Huerta</h5>
+                    <p class="card-text">“Me encantó el servicio de vacunación. Fueron muy pacientes con mi gato y explicaron todo claramente.”</p>
+                    <div class="estrellas">
+                        ⭐⭐⭐⭐☆
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card resena shadow-lg">
+                <img src="https://i.pravatar.cc/150?img=32" class="card-img-top rounded-circle mx-auto mt-3" alt="cliente">
+                <div class="card-body">
+                    <h5 class="card-title">Nelson Hernández</h5>
+                    <p class="card-text">“Excelente atención y muy profesionales. Mi gato odia los doctores, pero aquí se sintió en casa.”</p>
+                    <div class="estrellas">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card resena shadow-lg">
+                <img src="https://i.pravatar.cc/150?img=32" class="card-img-top rounded-circle mx-auto mt-3" alt="cliente">
+                <div class="card-body">
+                    <h5 class="card-title">Fernando Hernández</h5>
+                    <p class="card-text">“De los más atentos, me encantó el servicio de vacunación.Volveria a visitar.”</p>
+                    <div class="estrellas">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card resena shadow-lg">
+                <img src="https://i.pravatar.cc/150?img=32" class="card-img-top rounded-circle mx-auto mt-3" alt="cliente">
+                <div class="card-body">
+                    <h5 class="card-title">Daniel Meráz</h5>
+                    <p class="card-text">“Sus servicios de desparasitación me encantó mucho. Fue muy amable y atento.”</p>
+                    <div class="estrellas">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card resena shadow-lg">
+                <img src="https://i.pravatar.cc/150?img=32" class="card-img-top rounded-circle mx-auto mt-3" alt="cliente">
+                <div class="card-body">
+                    <h5 class="card-title">Jaime Cuellar</h5>
+                    <p class="card-text">“De las mejores veterinarias, me encantó el servicio.”</p>
+                    <div class="estrellas">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card resena shadow-lg">
+                <img src="{% static 'img/Clientes/Roberto_Estrada.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="cliente">
+                <div class="card-body">
+                    <h5 class="card-title">Roberto Estrada</h5>
+                    <p class="card-text">“Mi perrita estaba muy feliz después de su baño. El trato fue muy amable y la atención fue muy buena.”</p>
+                    <div class="estrellas">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Galeria -->
+
     <div id="galeria" class="row mt-5">
         <h3>Galeria</h3>
         <div id="foto1" class="col">
-            <img src="https://img.freepik.com/foto-gratis/primer-disparo-vertical-lindo-gato-europeo-pelo-corto_181624-34587.jpg?semt=ais_hybrid&w=740&q=80">
+            <img src="{% static 'img/Galeria/EntradaVidaVet.png' %}" alt="primer disparo">
         </div>
         <div id="foto2" class="col">
-            <img src="https://static.nationalgeographicla.com/files/styles/image_3200/public/nationalgeographic2300875.webp?w=380&h=570">
+            <img src="{% static 'img/Galeria/Estetica.png' %}">
 
         </div>
         <div id="foto3" class="col">
-            <img src="https://amomipitbull.com/wp-content/uploads/2015/12/american-pitbull-terrier5.jpg">
+            <img src="{% static 'img/Galeria/ChequeoGeneral.png' %}">
 
         </div>
         <div id="foto4"class="col">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK1UrpTy0cQmqfbCWonUQ30JdrjwJHCB6PIg&s">
+            <img src="{% static 'img/Galeria/PersonalPosando.png' %}">
 
+        </div>
+        <div id="foto5"class="col">
+            <img src="{% static 'img/Galeria/AreaOperaciones.png' %}">
+
+        </div>
+        <div id="foto6"class="col">
+            <img src="{% static 'img/Galeria/AreaDeBaño.png' %}">
         </div>
 
     </div>
@@ -247,7 +334,7 @@
             </div>
 
             <div id="botonTotal">
-                <button type="button" class="btn btn-success" onclick="calculartotal()">Calcular total</button>
+                <button type="button" class="btn btn-cotizacion" onclick="calculartotal()">Calcular total</button>
 
             </div>
 

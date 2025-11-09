@@ -86,6 +86,6 @@ def crear_servicio(request):
             descripcion=descripcion,
             precio=precio
         )
-        return redirect('listar')  # Redirige a una lista de servicios (la crearás después)
+        return redirect('listar')  
 
     return render(request, 'crearservicio.html')

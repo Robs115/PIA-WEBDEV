@@ -1,252 +1,390 @@
-body {
-    background-color: rgb(240, 240, 240);
+/* ===== RESET GENERAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-#logo {
-    justify-content: right;
-    text-align: right;
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fa;
+    color: #222;
+    overflow-x: hidden;
+}
+
+main.container {
+    max-width: 1200px;
+}
+
+/* ===== HEADER ===== */
+#header {
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
 }
 
 #logo img {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto;
+    width: 80px;
+    height: auto;
     border-radius: 50%;
 }
 
-#nombreempresa {
-    padding: 10px;
-    justify-content: center;
-    text-align: left;
-
+#nombreempresa h3 {
+    color: #009688;
+    font-weight: 800;
+    margin-bottom: 0;
 }
 
-
-#indice {
-    justify-content: center;
-    align-content: center;
+#nombreempresa p {
+    font-style: italic;
+    color: #555;
 }
+
+/* Menú */
 #indice ul {
-    font-size: 18px;
-    padding: 15px;
-    justify-content: center;
-    text-align: center;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     list-style: none;
-    gap: 15px;
-
+    gap: 18px;
 }
 
 #indice ul li a {
-    
-    transition: color .5s ease-in-out;
     text-decoration: none;
-    cursor: pointer;
-    color:rgb(169, 169, 169);
+    color: #222;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 #indice ul li a:hover {
-    /*color:black;
-    */
-    color:rgb(55, 144, 144);
+    color: #009688;
 }
 
-i {
-    width: 20px;
-    height: 20px;
-}
-
+/* ===== SECCIÓN DE PRESENTACIÓN ===== */
 #Pres {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
 }
+
 #textoPres {
-    
-    padding:20px;
-    border-radius: 5%;
-    background-color: white;
-    box-shadow:0px 0px 0px grey;
-    height: 350px ;
+    flex: 1;
+    min-width: 300px;
 }
 
-#textoPres button{
-    background-color: rgb(55, 144, 144);
-
-}
-#textoPres a {
-    color:rgb(55, 144, 144);
+#textoPres h2 {
+    font-weight: 800;
+    color: #222;
 }
 
-#imgPres {
-    width:90%;
-    border-radius: 5%;
-    height: 650px;
-    overflow: hidden;
-
-    
-    
+#textoPres p {
+    color: #555;
+    font-size: 1.1rem;
 }
 
 #imgPres img {
-     width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+/* ===== SECCIÓN SERVICIOS ===== */
+.card-servicio {
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    text-align: center;
+    height: 100%;
+}
+
+.card-servicio:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-servicio i {
+    color: #009688;
+}
+
+.card-servicio .card-title {
+    color: #111;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card-servicio .card-text {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.card-servicio .precio {
+    display: inline-block;
+    background-color: #009688;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* ===== EQUIPO ===== */
+#equipo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+#equipo h3, #equipo h4 {
+    color: #009688;
+}
+
+#logoDra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ===== PREGUNTAS FRECUENTES ===== */
+.accordion-button {
+    background-color: #00968810;
+    color: #222;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #009688;
+    color: white;
+}
+
+/* --- Sección de Reseñas --- */
+#resenas {
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    padding: 50px 20px;
+}
+
+#resenas h3 {
+    font-weight: bold;
+    color: #0b5345;
+}
+
+#resenas .resena {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#resenas .resena:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+#resenas img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border: 3px solid #0b5345;
+}
+
+#resenas .card-body {
+    padding: 20px;
+}
+
+#resenas .card-title {
+    font-weight: bold;
+    color: #0b5345;
+    margin-top: 10px;
+}
+
+#resenas .card-text {
+    font-size: 0.95rem;
+    color: #555;
+    min-height: 80px;
+}
+
+#resenas .estrellas {
+    color: #f1c40f;
+    font-size: 1.2rem;
 }
 
 
 
+/* ===== GALERÍA ===== */
+#galeria img {
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
 
-#consultas, #vacunacion, #peluqueria{
-    background-color: white;
-    border-radius: 7px;
+#galeria img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== COTIZACIONES ===== */
+#cotizaciones {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#cotizaciones select, 
+#cotizaciones input {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    width: 100%;
+}
+.btn-cotizacion {
+    background-color: #009688;  
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cotizacion:hover {
+    background-color: #017065; 
+}
+/* ===== CONTACTO ===== */
+#contacto input, #contacto textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
     padding: 10px;
 }
 
-#elegirnos {
-    background-color: white;
-    border-radius: 7px;
-    padding: 20px;
-    height: 220px;
+#contacto textarea {
+    min-height: 120px;
 }
 
-
-
-#tituloServ {
-    
-    gap:10px;
+#contacto button {
+    background-color: #009688;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: bold;
 }
 
-#galeria {
-    gap: 2px;
-    overflow: hidden;
+#contacto button:hover {
+    background-color: #00796b;
 }
 
-#foto1 img {
-    height: 160px;
-    width: 200px;
-    object-fit: cover;
-    border-radius: 5%;    
-
-
-}
-
-#foto2 img {
-    height: 300px;
-    width: 200px;
-    object-fit: cover;
-    border-radius: 5%;    
-
-}
-#foto3 img {
-    height: 160px;
-    width: 200px;
-    object-fit: cover;
-    border-radius: 5%;    
-
-}
-#foto4 img {
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-    border-radius: 5%;    
-
-}
-
-#galeria div {
-    height: px;
-    
-    
-    
-    
-}
-#contacto {
-    gap:5px;
-}
-
-#formcontacto button {
-    background-color:rgb(55, 144, 144); 
-}
-
-#formcontacto a {
-    color: rgb(55, 144, 144);
-
-}
-
-
-#formcontacto {
-    border-radius: 5%;
-    background-color: white;
-    padding: 20px;
-    height:600px;
-
-}
-
-#visitanos {
-    background-color: white;
-    border-radius: 5%;
-    padding: 15px;
-    height:500px;
+#visitanos iframe {
+    border-radius: 10px;
 }
 
 #visitanos ul {
-    list-style: none;
     display: flex;
-    gap:9px;
+    gap: 10px;
+    padding-left: 0;
+    list-style: none;
 }
 
-#logoBandit, #logoVacuna, #logoTijeras,#logoDra {
-    display: flex;        
-    align-items: center;  
-    gap: 10px;            
+#visitanos ul li a {
+    color: #009688;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
 }
 
-#pregFrecuentes {
-    background-color: white;
-    padding: 10px;
-    border-radius: 5%;
+#visitanos ul li a:hover {
+    color: #00695c;
 }
 
-#cotizaciones {
-    background-color: white;
-    padding: 10px;
-    border-radius: 5%;
-    height: 300px;
-
+/* ===== FOOTER ===== */
+.footer {
+    background-color: #009688;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 30px;
 }
 
-#botonTotal button {
-    background-color:rgb(55, 144, 144);  ;
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+    #indice ul {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    #Pres {
+        text-align: center;
+    }
+
+    #imgPres img {
+        margin-top: 20px;
+    }
+
+    #equipo {
+        text-align: center;
+    }
+
+    #cotizaciones {
+        text-align: center;
+    }
 }
 
-#cotizaciones,
-#contacto,
-#visitanos{
-    margin: 50px auto;
-    padding: 40px 30px;
-    max-width: 950px;
-    background: #fff;
-    border-radius: 22px;
-    box-shadow: 0px 8px 28px rgba(0,0,0,.12);
+@media (max-width: 768px) {
+    #header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    #indice ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #Pres {
+        flex-direction: column;
+    }
+
+    #resenas {
+        padding: 30px 10px;
+    }
+
+    #resenas .resena {
+        margin-bottom: 20px;
+    }
+
+    #resenas img {
+        width: 70px;
+        height: 70px;
+    }
+
+    #galeria .col {
+        margin-bottom: 20px;
+    }
+    
 }
 
 
-#cotizaciones button,
-#contacto button,
-#visitanos button{
-    background:#111;
-    color:white;
-    border:none;
-    padding:12px 32px;
-    border-radius:22px;
-    font-weight:600;
-    transition:.28s;
-    cursor:pointer;
-}
+@media (max-width: 576px) {
+    .card-servicio {
+        padding: 20px;
+    }
 
-#cotizaciones button:hover,
-#contacto button:hover,
-#visitanos button:hover{
-    background:#000;
-    transform:translateY(-3px);
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    .card-servicio .card-title {
+        font-size: 1.1rem;
+    }
+
+    #contacto, #visitanos {
+        text-align: center;
+    }
+
+    iframe {
+        width: 100%;
+        height: 200px;
+    }
 }
