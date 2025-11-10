@@ -392,3 +392,31 @@ main.container {
         height: 200px;
     }
 }
+
+
+/* LOGIN */
+
+#btnAccederDB {
+    background-color: #009688;
+    color: white;
+    border: none;
+    
+    padding: 7px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#btnAccederDB:hover {
+    background-color: #017065;
+}
+
+#btnRegresarIndex {
+    transition: background-color 0.3s ease;
+    border: none;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+#btnRegresarIndex:hover {
+    background-color: rgb(90, 90, 90);
+}

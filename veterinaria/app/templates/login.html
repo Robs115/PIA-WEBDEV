@@ -6,16 +6,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/index/style.css' %}">
     </head>
-    <body class="bg-white">
+    <body>
         <div class="container col-4">
-            <div class="border border-secondary mt-5 p-5 rounded">
+            <div class="bg-white border border-secondary mt-5 p-5 rounded">
                 <h1>Iniciar Sesion:</h1>
 
                     <form method="post">
                         {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-info">Acceder</button>
+                        
+                        <div class="mb-3">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                          </div>
+                          
+                          <div class="mb-3">
+                            {{ form.password.label_tag }}
+                            {{ form.password }}
+                          </div>
+                          
+                        <button id="btnAccederDB" type="submit" class="btn btn-info">Acceder</button>
                     </form>
 
                     {% if form.errors %}
@@ -25,7 +36,7 @@
                     {% endif %}
             </div>
             <div class="ms-3 mt-3">
-            <a class="text" href="../"><button type="button" class="btn btn-secondary">Regresar a pagina principal</button></a>
+            <a class="text" href="../"><button id="btnRegresarIndex" type="button" class="btn btn-secondary">Regresar a pagina principal</button></a>
             </div>
         </div>
         
