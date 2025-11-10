@@ -76,8 +76,11 @@
 
         </div>
     </div>
-    <!-- Pendiente: Agregar servicios directamente desde la base de datos-->
-    <div class="row justify-content-center mt-5 pt-5">
+
+
+    <!--Seccion de servicios-->
+    <div id="servicios" class="row justify-content-center mt-5 pt-5">
+        <h3 id = "tituloServ">Servicios</h3>
         {% for servicio in servicios %}
             <div class="col-md-4 mb-4">
                 <div class="card card-servicio shadow-lg text-white">
@@ -263,7 +266,47 @@
                 </div>
             </div>
         </div>
+    </div>\
+
+        <!-- Sección Nosotros -->
+    <div id="nosotros" class="row mt-5 pt-5 align-items-center">
+        <div class="col-md-6">
+            <h2 class="mb-4"><i class="fa-solid fa-paw"></i> Sobre Nosotros</h2>
+            <p>
+                En <strong>VidaVet</strong>, creemos que cada mascota merece una atención médica y emocional de calidad. 
+                Somos un equipo comprometido con el bienestar animal, ofreciendo servicios médicos, estéticos y preventivos 
+                que garantizan la salud y felicidad de tus compañeros peludos.
+            </p>
+            <hr class="text-white">
+
+            <h4 class="mt-4"><i class="fa-solid fa-heart text-danger"></i> Misión</h4>
+            <p>
+                Brindar atención veterinaria integral con calidez humana, profesionalismo y amor por los animales, 
+                asegurando su bienestar y tranquilidad para cada familia que confía en nosotros.
+            </p>
+
+            <h4 class="mt-4"><i class="fa-solid fa-eye text-primary"></i> Visión</h4>
+            <p>
+                Ser la clínica veterinaria líder en Monterrey reconocida por su excelencia médica, innovación y compromiso 
+                con la vida animal.
+            </p>
+
+            <h4 class="mt-4"><i class="fa-solid fa-scale-balanced text-success"></i> Valores</h4>
+            <ul>
+                <li>Empatía y respeto hacia cada ser vivo.</li>
+                <li>Compromiso y responsabilidad profesional.</li>
+                <li>Confianza y transparencia con nuestros clientes.</li>
+                <li>Trabajo en equipo y mejora continua.</li>
+            </ul>
+        </div>
+
+        <div class="col-md-6 text-center">
+            <img src="{% static 'img/Galeria/PersonalPosando.png' %}" 
+                alt="Equipo VidaVet" 
+                class="img-fluid rounded-4 shadow-lg">
+        </div>
     </div>
+
 
     <!-- Galeria -->
 
@@ -281,14 +324,10 @@
 
         </div>
         <div id="foto4"class="col">
-            <img src="{% static 'img/Galeria/PersonalPosando.png' %}">
-
-        </div>
-        <div id="foto5"class="col">
             <img src="{% static 'img/Galeria/AreaOperaciones.png' %}">
 
         </div>
-        <div id="foto6"class="col">
+        <div id="foto5"class="col">
             <img src="{% static 'img/Galeria/AreaDeBaño.png' %}">
         </div>
 
@@ -296,7 +335,7 @@
     
     <div class="row mt-4" id="cotizaciones">
             <h3>Cotizaciones</h3>
-            <div id="servicios" class="col">
+            <div id="servicio" class="col">
             
                 <fieldset>
                     

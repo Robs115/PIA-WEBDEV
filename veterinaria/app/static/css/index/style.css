@@ -93,6 +93,10 @@ main.container {
 }
 
 /* ===== SECCIÓN SERVICIOS ===== */
+#tituloServ {
+    color: #009688;
+}
+
 .card-servicio {
     background-color: #fff;
     border: none;
@@ -141,8 +145,8 @@ main.container {
     gap: 30px;
 }
 
-#equipo h3, #equipo h4 {
-    color: #009688;
+#equipo h3, #equipo h4  {
+    color: #009688; 
 }
 
 #logoDra {
