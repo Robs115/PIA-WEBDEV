@@ -166,6 +166,11 @@ main.container {
     color: white;
 }
 
+#pregFrecuentes h3 {
+    color:#00796b;
+
+}
+
 /* --- Sección de Reseñas --- */
 #resenas {
     background-color: #f8f9fa;
