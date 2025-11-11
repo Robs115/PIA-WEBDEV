@@ -49,6 +49,9 @@
 
     </div>  
     
+
+    
+    
     <div id="Pres" class="row mt-5">
         <div id="textoPres" class="col">
             
@@ -434,11 +437,59 @@
 
         </div> 
     </div> 
+    <!--
+    <div class="row mt-2">
+        <div id="accesidibilidad" class="col-6">
+            <h3>Mejora visual:</h3>
+        <div class="m-4">
+
+            Cambiar tamaño del texto: <button class="btn btn-outline-secondary" onclick="aumentartamaño()">➖ </button>
+            <button  class="btn-outline-secondary" onclick="disminuirtamaño()">➕</button>
+            <script>
+                let tamañodeltexto = '2000';
+                function aumentartamaño () {
+                    tamañodeltexto=+2;
+                    document.body.style.fontSize = tamañodeltexto + 'px';
+                }
+
+                function disminuirtamaño () {
+                    document.body.style.background = 'black';
+                }
+            </script>
+        </div>
+
+        <div class="m-4">
+            Cambiar modo oscuro: <button class="btn btn-outline-secondary" onclick="modoOscuro()">🌙</button>
+
+            <script>
+                let modooscuro = false;
+                function modoOscuro() {
+                    
+                    if (!modooscuro) {
+                        document.body.style.backgroundColor = "black";
+                        document.body.style.color="white";
+                        modooscuro = true;
+                    } else {
+                        document.body.style.backgroundColor = "white";
+                        document.body.style.color="black";
+                        modooscuro = false;
+                        
+                    }
+                }
+            </script>
+
+        </div>
+        
+        </div>
+    </div>
+-->
     <div class="footer mt-4">
         
         <div class="col"><p>2025 VivaVet -- Todos los derechos reservados.</p></div>
         
     </div>
+
+    
    </main> 
 </body>
 </html>
