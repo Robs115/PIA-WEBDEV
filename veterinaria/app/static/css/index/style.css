@@ -5,6 +5,29 @@
     box-sizing: border-box;
 }
 
+/*========= PARTE DE MODO OSCURO Y EDITAR TAMAÑO DE LETRA =========== */
+
+#divdeprueba {
+    background-color: rgb(233, 233, 233); 
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#divdeprueba button {
+    background-color: transparent;
+    border:none;
+    
+}
+
+#divdeprueba i {
+    transition: color 1s ease-in-out;
+}
+
+#divdeprueba i:hover {
+    color: #009688;
+}
+
+/* ========================================================= */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f7f9fa;

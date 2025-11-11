@@ -24,16 +24,14 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjmumEavWfobVNFtNJpzMzGoyuvJG7eEXBDQ&s" alt="patitadeperro">
         </div> 
         
-        <div id="nombreempresa" class="col-3">
+        <div id="nombreempresa" class="col-2">
             
             <h3>VidaVet</h3>
             <p>Cuidado con cariño</p>
         </div>
 
-        <!--<div class="col-2">
-
-        </div>-->
-        <div id="indice" class="col-7" >
+       
+        <div id="indice" class="col-8" >
             <ul>
                 <li><a href="#tituloServ">Servicios</a></li>
                 <li><a href="#equipo">Equipo</a></li>
@@ -42,6 +40,12 @@
                 <li><a href="#pregFrecuentes">FAQ</a></li>
                 <li><a href="#cotizaciones">Cotizacion</a></li>
                 <li><a href="{% url 'login' %}">Iniciar Sesion</a></li>
+                <div id="divdeprueba">
+                    <button type="button" onclick="modoOscuro()"><i class="fa-solid fa-moon"></i></button>
+                    <i class="fa-solid fa-font"></i>:  
+                    <button type="button" onclick="tamañoGrande()"><i class="fa-solid fa-plus"></i></button>
+                    <button type="button" onclick="tamañoPequeño()"><i class="fa-solid fa-minus"></i></button>
+                </div>
             </ul>
         </div>
         
@@ -49,8 +53,31 @@
 
     </div>  
     
-
-    
+    <!--Script para modo oscuro y tamaño de fuente-->
+    <script>
+        let modooscuro = false;
+        function modoOscuro() {
+            
+            if (!modooscuro) {
+                document.body.style.backgroundColor = "black";
+                document.body.style.color="white";
+                document.getElementById("indice").style.color="white"
+                modooscuro = true;
+            } else {
+                document.body.style.backgroundColor = "white";
+                document.body.style.color="black";
+                document.getElementById("indice").style.color ="black"
+                modooscuro = false;
+                
+            }
+        }
+        function tamañoGrande() {
+            document.body.style.fontSize = "150%"
+        }
+        function tamañoPequeño() {
+            document.body.style.fontSize = "100%"
+        }
+    </script>
     
     <div id="Pres" class="row mt-5">
         <div id="textoPres" class="col">
