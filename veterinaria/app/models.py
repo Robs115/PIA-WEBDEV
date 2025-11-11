@@ -22,3 +22,8 @@ class Cita_Veterinaria(models.Model):
 
     def __str__(self):
         return self.nombre_dueño
+    
+    class Meta:
+        permissions = [
+            ("change_status_only", "Puede cambiar solo el estatus de la cita."),
+        ]

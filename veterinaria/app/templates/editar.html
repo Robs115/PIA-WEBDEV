@@ -16,6 +16,20 @@
     <form method="POST">
         {% csrf_token %}
 
+
+        {% if solo_estatus %}
+        
+        <div class="col-md-4">
+            <label for="estatus_cita" class="form-label fw-semibold" >Estatus</label>
+            <select name="estatus_cita" id="estatus_cita" class="form-select" >
+                <option value="Pendiente" {% if cita_veterinaria.estatus_cita == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                <option value="Realizada" {% if cita_veterinaria.estatus_cita == 'Realizada' %}selected{% endif %}>Realizada</option>
+                <option value="Cancelada" {% if cita_veterinaria.estatus_cita == 'Cancelada' %}selected{% endif %}>Cancelada</option>
+            </select>
+        </div>
+
+        {% else %}
+
         <div class="row g-3">
     
         <div class="col-md-6">
@@ -53,7 +67,7 @@
             <select name="estatus_cita" id="estatus_cita" class="form-select" >
                 <option value="Pendiente" {% if cita_veterinaria.estatus_cita == 'Pendiente' %}selected{% endif %}>Pendiente</option>
                 <option value="Realizada" {% if cita_veterinaria.estatus_cita == 'Realizada' %}selected{% endif %}>Realizada</option>
-                <option value="Cancelada" {% if cita_veterinaria.estatus_cita == 'Cancelado' %}selected{% endif %}>Cancelada</option>
+                <option value="Cancelada" {% if cita_veterinaria.estatus_cita == 'Cancelada' %}selected{% endif %}>Cancelada</option>
             </select>
         </div>
 
@@ -72,6 +86,8 @@
             {% endfor %}
             </select>
         </div>
+
+        {% endif %}
 
         <!-- Botón -->
         <div class="col-12 text-center mt-4">
