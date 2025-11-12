@@ -7,7 +7,7 @@
     <title>Editar</title>
     <link rel="stylesheet" href="{% static 'css/editar.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
+    <link rel="shortcut icon" href="{% static 'img/LogosPaginas/editar-informacion.png' %}">
 </head>
 <body>
     <main class="container m-5">
@@ -35,19 +35,19 @@
     
             <div class="col-md-6">
                 <label for="nombre_dueño" class="form-label fw-semibold">Nombre del dueño</label>
-                <input type="text" name="nombre_dueño" id="nombre_dueño" class="form-control" value="{{ cita_veterinaria.nombre_dueño }}" pattern="[A-Za-z\s]+" placeholder="Ej. Edgar" required>
+                <input  readonly type="text" name="nombre_dueño" id="nombre_dueño" class="form-control" value="{{ cita_veterinaria.nombre_dueño }}" pattern="[A-Za-z\s]+" placeholder="Ej. Edgar" required>
             </div>
     
         
             <div class="col-md-6">
                 <label for="nombre_mascota" class="form-label fw-semibold">Nombre de la mascota</label>
-                <input type="text" name="nombre_mascota" id="nombre_mascota" class="form-control" value="{{ cita_veterinaria.nombre_mascota }}" pattern="[A-Za-z\s]+" placeholder="Ej. Rocky" required>
+                <input readonly type="text" name="nombre_mascota" id="nombre_mascota" class="form-control" value="{{ cita_veterinaria.nombre_mascota }}" pattern="[A-Za-z\s]+" placeholder="Ej. Rocky" required>
             </div>
     
             <!-- Especie -->
             <div class="col-md-6">
                 <label for="especie" class="form-label fw-semibold">Especie</label>
-                <input type="text" name="especie" id="especie" class="form-control" value="{{ cita_veterinaria.especie }}" pattern="[A-Za-z\s]+" placeholder="Ej. Perro, Gato" required>
+                <input readonly type="text" name="especie" id="especie" class="form-control" value="{{ cita_veterinaria.especie }}" pattern="[A-Za-z\s]+" placeholder="Ej. Perro, Gato" required>
             </div>
     
             <!-- Fecha -->

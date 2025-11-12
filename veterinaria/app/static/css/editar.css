@@ -5,3 +5,7 @@
 .color {
     color:rgb(55, 144, 144);
 }
+input[readonly] {
+  background-color: #e9ecef; /* mismo gris que usa Bootstrap */
+  cursor: not-allowed;
+}
