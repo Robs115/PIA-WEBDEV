@@ -87,91 +87,93 @@ def crear_Cita_Veterinaria(request):
 def editar_Cita_Veterinaria(request, id):
     cita_veterinaria = get_object_or_404(Cita_Veterinaria, id=id)
     listar_servicio = Servicio.objects.all()
-    solo_estatus = request.user.has_perm('app.change_status_only')
+    consulta_full_edit = request.user.has_perm('app.consulta_full_edit')
 
     if request.method == 'POST':
-        if solo_estatus:
-            cita_veterinaria.estatus_cita = request.POST.get('estatus_cita', '').upper()
-            cita_veterinaria.save()
-            messages.success(request, "Estatus de la cita actualizado correctamente.")
-            return redirect('listar')
+        if consulta_full_edit:
+            nombre_dueño = request.POST.get('nombre_dueño', '').upper()
+            nombre_mascota = request.POST.get('nombre_mascota', '').upper()
+            especie = request.POST.get('especie', '').upper()
+            fecha_cita = request.POST.get('fecha_cita')
+            hora_cita = request.POST.get('hora_cita')
+            estatus_cita = request.POST.get('estatus_cita', '').upper()
+            descripcion = request.POST.get('descripcion', '').upper()
+            servicio_id = request.POST.get('servicio')
 
-        nombre_dueño = request.POST.get('nombre_dueño', '').upper()
-        nombre_mascota = request.POST.get('nombre_mascota', '').upper()
-        especie = request.POST.get('especie', '').upper()
-        fecha_cita = request.POST.get('fecha_cita')
-        hora_cita = request.POST.get('hora_cita')
-        estatus_cita = request.POST.get('estatus_cita', '').upper()
-        descripcion = request.POST.get('descripcion', '').upper()
-        servicio_id = request.POST.get('servicio')
-
-        # Validar formatos
-        try:
-            fecha_cita_dt = datetime.strptime(fecha_cita, "%Y-%m-%d").date()
-            hora_cita_dt = datetime.strptime(hora_cita, "%H:%M").time()
-        except (TypeError, ValueError):
-            messages.error(request, "Formato de fecha u hora inválido.")
-            return render(request, 'editar.html', {
-                'cita_veterinaria': cita_veterinaria,
-                'servicio': listar_servicio,
-                'solo_estatus': solo_estatus
-            })
-
-        # Validar fecha anterior
-        hoy = datetime.now().date()
-        if fecha_cita_dt < hoy:
-            messages.error(request, "No puedes establecer una cita en una fecha anterior a hoy.")
-            return render(request, 'editar.html', {
-                'cita_veterinaria': cita_veterinaria,
-                'servicio': listar_servicio,
-                'solo_estatus': solo_estatus
-            })
-
-        # Validar duplicados (otra cita con misma fecha y hora)
-        if Cita_Veterinaria.objects.filter(
-            fecha_cita=fecha_cita_dt, hora_cita=hora_cita_dt
-        ).exclude(id=id).exists():
-            messages.error(request, "Ya existe una cita en esa misma fecha y hora.")
-            return render(request, 'editar.html', {
-                'cita_veterinaria': cita_veterinaria,
-                'servicio': listar_servicio,
-                'solo_estatus': solo_estatus
-            })
-
-        # Validar lapso de 30 minutos
-        hora_nueva = datetime.combine(fecha_cita_dt, hora_cita_dt)
-        citas_en_dia = Cita_Veterinaria.objects.filter(fecha_cita=fecha_cita_dt).exclude(id=id)
-
-        for cita in citas_en_dia:
-            hora_existente = datetime.combine(cita.fecha_cita, cita.hora_cita)
-            diferencia = abs((hora_nueva - hora_existente).total_seconds()) / 60
-            if diferencia < 30:
-                hora_conflicto = hora_existente.strftime("%I:%M %p")
-                messages.error(request, f"No se puede registrar la cita. Hay otra programada a las {hora_conflicto}. Debe haber al menos 30 minutos de diferencia.")
+            # Validar formatos
+            try:
+                fecha_cita_dt = datetime.strptime(fecha_cita, "%Y-%m-%d").date()
+                hora_cita_dt = datetime.strptime(hora_cita, "%H:%M").time()
+            except (TypeError, ValueError):
+                messages.error(request, "Formato de fecha u hora inválido.")
                 return render(request, 'editar.html', {
                     'cita_veterinaria': cita_veterinaria,
                     'servicio': listar_servicio,
-                    'solo_estatus': solo_estatus
+                    'consulta_full_edit': consulta_full_edit
                 })
 
-        # Si todo está bien, guardar cambios
-        cita_veterinaria.nombre_dueño = nombre_dueño
-        cita_veterinaria.nombre_mascota = nombre_mascota
-        cita_veterinaria.especie = especie
-        cita_veterinaria.fecha_cita = fecha_cita
-        cita_veterinaria.hora_cita = hora_cita
-        cita_veterinaria.servicio = Servicio.objects.get(id=servicio_id)
-        cita_veterinaria.estatus_cita = estatus_cita
-        cita_veterinaria.descripcion = descripcion
-        cita_veterinaria.save()
+            # Validar fecha anterior
+            hoy = datetime.now().date()
+            if fecha_cita_dt < hoy:
+                messages.error(request, "No puedes establecer una cita en una fecha anterior a hoy.")
+                return render(request, 'editar.html', {
+                    'cita_veterinaria': cita_veterinaria,
+                    'servicio': listar_servicio,
+                    'consulta_full_edit': consulta_full_edit
+                })
 
-        messages.success(request, "Cita actualizada correctamente.")
-        return redirect('listar')
+            # Validar duplicados (otra cita con misma fecha y hora)
+            if Cita_Veterinaria.objects.filter(
+                fecha_cita=fecha_cita_dt, hora_cita=hora_cita_dt
+            ).exclude(id=id).exists():
+                messages.error(request, "Ya existe una cita en esa misma fecha y hora.")
+                return render(request, 'editar.html', {
+                    'cita_veterinaria': cita_veterinaria,
+                    'servicio': listar_servicio,
+                    'consulta_full_edit': consulta_full_edit
+                })
+
+            # Validar lapso de 30 minutos
+            hora_nueva = datetime.combine(fecha_cita_dt, hora_cita_dt)
+            citas_en_dia = Cita_Veterinaria.objects.filter(fecha_cita=fecha_cita_dt).exclude(id=id)
+
+            for cita in citas_en_dia:
+                hora_existente = datetime.combine(cita.fecha_cita, cita.hora_cita)
+                diferencia = abs((hora_nueva - hora_existente).total_seconds()) / 60
+                if diferencia < 30:
+                    hora_conflicto = hora_existente.strftime("%I:%M %p")
+                    messages.error(request, f"No se puede registrar la cita. Hay otra programada a las {hora_conflicto}. Debe haber al menos 30 minutos de diferencia.")
+                    return render(request, 'editar.html', {
+                        'cita_veterinaria': cita_veterinaria,
+                        'servicio': listar_servicio,
+                        'consulta_full_edit': consulta_full_edit
+                    })
+
+            # Si todo está bien, guardar cambios
+            cita_veterinaria.nombre_dueño = nombre_dueño
+            cita_veterinaria.nombre_mascota = nombre_mascota
+            cita_veterinaria.especie = especie
+            cita_veterinaria.fecha_cita = fecha_cita
+            cita_veterinaria.hora_cita = hora_cita
+            cita_veterinaria.servicio = Servicio.objects.get(id=servicio_id)
+            cita_veterinaria.estatus_cita = estatus_cita
+            cita_veterinaria.descripcion = descripcion
+            cita_veterinaria.save()
+
+            messages.success(request, "Cita actualizada correctamente.")
+            return redirect('listar')
+        
+        else:
+            cita_veterinaria.estatus_cita = request.POST.get('estatus_cita', '').upper()
+            cita_veterinaria.save()
+            messages.success(request, "Estado de la cita actualizado.")
+            return redirect('listar')
+
 
     return render(request, 'editar.html', {
         'cita_veterinaria': cita_veterinaria,
         'servicio': listar_servicio,
-        'solo_estatus': solo_estatus
+        'consulta_full_edit': consulta_full_edit
     })
 
 

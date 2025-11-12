@@ -40,11 +40,11 @@
                     <td>{{ cita.hora_cita }}</td>
                     <td>{{ cita.servicio }}</td>
                     <td>
-                        {% if cita.estatus_cita == "Pendiente" %}
+                        {% if cita.estatus_cita == "PENDIETE" %}
                             <span class="estatus pendiente">{{ cita.estatus_cita }}</span>
-                        {% elif cita.estatus_cita == "Realizada" %}
+                        {% elif cita.estatus_cita == "REALIZADA" %}
                             <span class="estatus realizada">{{ cita.estatus_cita }}</span>
-                        {% elif cita.estatus_cita == "Cancelada" %}
+                        {% elif cita.estatus_cita == "CANCELADA" %}
                             <span class="estatus cancelada">{{ cita.estatus_cita }}</span>
                         {% else %}
                             <span class="estatus">{{ cita.estatus_cita }}</span>

@@ -25,5 +25,5 @@ class Cita_Veterinaria(models.Model):
     
     class Meta:
         permissions = [
-            ("change_status_only", "Puede cambiar solo el estatus de la cita."),
+            ("consulta_full_edit", "Puede cambiar todos los elementos de una cita."),
         ]

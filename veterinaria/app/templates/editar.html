@@ -29,73 +29,73 @@
         {% csrf_token %}
 
 
-        {% if solo_estatus %}
-        
-        <div class="col-md-4">
-            <label for="estatus_cita" class="form-label fw-semibold" >Estatus</label>
-            <select name="estatus_cita" id="estatus_cita" class="form-select" >
-                <option value="Pendiente" {% if cita_veterinaria.estatus_cita == 'Pendiente' %}selected{% endif %}>Pendiente</option>
-                <option value="Realizada" {% if cita_veterinaria.estatus_cita == 'Realizada' %}selected{% endif %}>Realizada</option>
-                <option value="Cancelada" {% if cita_veterinaria.estatus_cita == 'Cancelada' %}selected{% endif %}>Cancelada</option>
-            </select>
-        </div>
-
-        {% else %}
+        {% if consulta_full_edit %}
 
         <div class="row g-3">
     
-        <div class="col-md-6">
-            <label for="nombre_dueño" class="form-label fw-semibold">Nombre del dueño</label>
-            <input type="text" name="nombre_dueño" id="nombre_dueño" class="form-control" value="{{ cita_veterinaria.nombre_dueño }}" pattern="[A-Za-z\s]+" placeholder="Ej. Edgar" required>
-        </div>
-
+            <div class="col-md-6">
+                <label for="nombre_dueño" class="form-label fw-semibold">Nombre del dueño</label>
+                <input type="text" name="nombre_dueño" id="nombre_dueño" class="form-control" value="{{ cita_veterinaria.nombre_dueño }}" pattern="[A-Za-z\s]+" placeholder="Ej. Edgar" required>
+            </div>
     
-        <div class="col-md-6">
-            <label for="nombre_mascota" class="form-label fw-semibold">Nombre de la mascota</label>
-            <input type="text" name="nombre_mascota" id="nombre_mascota" class="form-control" value="{{ cita_veterinaria.nombre_mascota }}" pattern="[A-Za-z\s]+" placeholder="Ej. Rocky" required>
-        </div>
+        
+            <div class="col-md-6">
+                <label for="nombre_mascota" class="form-label fw-semibold">Nombre de la mascota</label>
+                <input type="text" name="nombre_mascota" id="nombre_mascota" class="form-control" value="{{ cita_veterinaria.nombre_mascota }}" pattern="[A-Za-z\s]+" placeholder="Ej. Rocky" required>
+            </div>
+    
+            <!-- Especie -->
+            <div class="col-md-6">
+                <label for="especie" class="form-label fw-semibold">Especie</label>
+                <input type="text" name="especie" id="especie" class="form-control" value="{{ cita_veterinaria.especie }}" pattern="[A-Za-z\s]+" placeholder="Ej. Perro, Gato" required>
+            </div>
+    
+            <!-- Fecha -->
+            <div class="col-md-3">
+                <label for="fecha_cita" class="form-label fw-semibold">Fecha de la cita</label>
+                <input type="date" name="fecha_cita" id="fecha_cita" class="form-control" value="{{ cita_veterinaria.fecha_cita|date:'Y-m-d' }}" required>
+            </div>
+    
+            <!-- Hora -->
+            <div class="col-md-3">
+                <label for="hora_cita" class="form-label fw-semibold">Hora de la cita</label>
+                <input type="time" name="hora_cita" id="hora_cita" class="form-control" value="{{ cita_veterinaria.hora_cita|time:'H:i' }}" required>
+            </div>
+    
+            <!-- Estatus -->
+            <div class="col-md-4">
+                <label for="estatus_cita" class="form-label fw-semibold" >Estatus</label>
+                <select name="estatus_cita" id="estatus_cita" class="form-select" >
+                    <option value="Pendiente" {% if cita_veterinaria.estatus_cita == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                    <option value="Realizada" {% if cita_veterinaria.estatus_cita == 'Realizada' %}selected{% endif %}>Realizada</option>
+                    <option value="Cancelada" {% if cita_veterinaria.estatus_cita == 'Cancelada' %}selected{% endif %}>Cancelada</option>
+                </select>
+            </div>
+    
+            <!-- Descripción -->
+            <div class="col-md-8">
+                <label for="descripcion" class="form-label fw-semibold">Descripción</label>
+                <input type="text" name="descripcion" id="descripcion" class="form-control"  value="{{ cita_veterinaria.descripcion }}" placeholder="Detalles de la cita">
+            </div>
+    
+            <!-- Servicio (Motivo) -->
+            <div class="col-md-6">
+                <label for="servicio" class="form-label fw-semibold">Servicio (Motivo)</label>
+                <select name="servicio" id="servicio" class="form-select">
+                {% for servicios in servicio %}
+                    <option value="{{ servicios.id }}" {% if servicios.id == cita_veterinaria.servicio.id %}selected{% endif %}>{{ servicios.nombre }}</option>
+                {% endfor %}
+                </select>
+            </div>
 
-        <!-- Especie -->
-        <div class="col-md-6">
-            <label for="especie" class="form-label fw-semibold">Especie</label>
-            <input type="text" name="especie" id="especie" class="form-control" value="{{ cita_veterinaria.especie }}" pattern="[A-Za-z\s]+" placeholder="Ej. Perro, Gato" required>
-        </div>
+        {% else %}
 
-        <!-- Fecha -->
-        <div class="col-md-3">
-            <label for="fecha_cita" class="form-label fw-semibold">Fecha de la cita</label>
-            <input type="date" name="fecha_cita" id="fecha_cita" class="form-control" value="{{ cita_veterinaria.fecha_cita|date:'Y-m-d' }}" required>
-        </div>
-
-        <!-- Hora -->
-        <div class="col-md-3">
-            <label for="hora_cita" class="form-label fw-semibold">Hora de la cita</label>
-            <input type="time" name="hora_cita" id="hora_cita" class="form-control" value="{{ cita_veterinaria.hora_cita|time:'H:i' }}" required>
-        </div>
-
-        <!-- Estatus -->
         <div class="col-md-4">
             <label for="estatus_cita" class="form-label fw-semibold" >Estatus</label>
             <select name="estatus_cita" id="estatus_cita" class="form-select" >
                 <option value="Pendiente" {% if cita_veterinaria.estatus_cita == 'Pendiente' %}selected{% endif %}>Pendiente</option>
                 <option value="Realizada" {% if cita_veterinaria.estatus_cita == 'Realizada' %}selected{% endif %}>Realizada</option>
                 <option value="Cancelada" {% if cita_veterinaria.estatus_cita == 'Cancelada' %}selected{% endif %}>Cancelada</option>
-            </select>
-        </div>
-
-        <!-- Descripción -->
-        <div class="col-md-8">
-            <label for="descripcion" class="form-label fw-semibold">Descripción</label>
-            <input type="text" name="descripcion" id="descripcion" class="form-control"  value="{{ cita_veterinaria.descripcion }}" placeholder="Detalles de la cita">
-        </div>
-
-        <!-- Servicio (Motivo) -->
-        <div class="col-md-6">
-            <label for="servicio" class="form-label fw-semibold">Servicio (Motivo)</label>
-            <select name="servicio" id="servicio" class="form-select">
-            {% for servicios in servicio %}
-                <option value="{{ servicios.id }}" {% if servicios.id == cita_veterinaria.servicio.id %}selected{% endif %}>{{ servicios.nombre }}</option>
-            {% endfor %}
             </select>
         </div>
 
