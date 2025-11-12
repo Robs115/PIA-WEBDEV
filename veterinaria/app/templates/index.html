@@ -53,22 +53,107 @@
 
     </div>  
     
-    <!--Script para modo oscuro y tamaño de fuente-->
+    
+    <!--Script para modo oscuro y tamaño de fuente -->
     <script>
         let modooscuro = false;
         function modoOscuro() {
             
             if (!modooscuro) {
-                document.body.style.backgroundColor = "black";
-                document.body.style.color="white";
-                document.getElementById("indice").style.color="white"
-                modooscuro = true;
-            } else {
-                document.body.style.backgroundColor = "white";
-                document.body.style.color="black";
-                document.getElementById("indice").style.color ="black"
-                modooscuro = false;
+    
                 
+            document.body.style.backgroundColor = "#121212";
+            document.body.style.color = "#f7f9fa";
+
+            // Header
+            document.querySelector("#header")?.style.setProperty("border-bottom", "2px solid #444");
+            document.querySelector("#nombreempresa h3")?.style.setProperty("color", "#4DD0E1");
+            document.querySelector("#nombreempresa p")?.style.setProperty("color", "#EDEDED");
+
+            // ÍNDICE / MENÚ
+            document.querySelectorAll("#indice ul li a").forEach(a => {
+                a.style.color = "#EDEDED";
+            });
+
+            // TARJETAS DE SERVICIOS
+            document.querySelectorAll(".card-servicio").forEach(card => {
+                card.style.backgroundColor = "#1E1E1E";
+                
+                card.style.boxShadow = "0 8px 20px rgba(255,255,255,0.05)";
+            });
+            document.querySelectorAll(".card-servicio .card-title").forEach(card => card.style.color = "#EDEDED");
+            document.querySelectorAll(".card-servicio .card-text").forEach(card => card.style.color = "#EDEDED");
+
+            document.querySelectorAll(".card-servicio i").forEach(i => i.style.color = "#4DD0E1");
+            document.querySelectorAll(".card-servicio .precio").forEach(p => {
+                p.style.backgroundColor = "#4DD0E1";
+                p.style.color = "#000";
+            });
+
+            // EQUIPO
+            document.querySelectorAll("#equipo h3, #equipo h4").forEach(e => e.style.color = "#4DD0E1");
+
+            // PREGUNTAS FRECUENTES
+            document.querySelectorAll(".accordion-button").forEach(btn => {
+                btn.style.backgroundColor = "#222";
+                btn.style.color = "#f7f9fa";
+            });
+
+            // RESEÑAS
+            document.querySelector("#resenas")?.style.setProperty("background-color", "#1E1E1E");
+            document.querySelector("#resenas")?.style.setProperty("color", "#f0f0f0"); //no funciona idk why
+            document.querySelector("#resenas h3")?.style.setProperty("color", "#4DD0E1")
+            document.querySelectorAll("#resenas .card-title").forEach(a => {
+                a.style.color= "#4DD0E1"
+            })
+            document.querySelectorAll("#resenas .card-text").forEach(a => {
+                a.style.color= "#f0f0f0"
+            })
+            
+            
+            document.querySelectorAll("#resenas .resena").forEach(r => {
+                r.style.backgroundColor = "#222";
+                r.style.color = "#f0f0f0";
+            });
+
+            // COTIZACIONES
+            document.querySelector("#cotizaciones")?.style.setProperty("background-color", "#1E1E1E");
+            document.querySelector("#cotizaciones .btn-cotizacion")?.style.setProperty("background-color", "#4DD0E1");
+             document.querySelector("#cotizaciones .btn-cotizacion")?.style.setProperty("color", "black");
+            document.querySelectorAll("#cotizaciones select, #cotizaciones input").forEach(e => {
+                e.style.backgroundColor = "#2C2C2C";
+                e.style.color = "#f7f9fa";
+                e.style.border = "1px solid #666";
+            });
+
+            // CONTACTO
+            document.querySelectorAll("#contacto input, #contacto textarea").forEach(e => {
+                e.style.backgroundColor = "#2C2C2C";
+                e.style.color = "#f7f9fa";
+                e.style.border = "1px solid #666";
+            });
+            document.querySelector("#contacto button")?.style.setProperty("background-color", "#4DD0E1");
+            document.querySelector("#contacto button")?.style.setProperty("color", "#000");
+
+            // FOOTER
+            document.querySelector(".footer")?.style.setProperty("background-color", "#1E1E1E");
+            document.querySelector(".footer")?.style.setProperty("color", "#f7f9fa");
+
+            //Presentacion (no sirve aun)
+            document.querySelector("#textoPres p")?.style.setProperty("color","#f0f0f0")
+            document.querySelector("#textoPres h2")?.style.setProperty("color","#f0f0f0")
+            document.querySelectorAll("#textoPres .col-md-6.mt-1 p").forEach(a => {
+
+            a.style.color="#f0f0f0"
+            })
+            
+            modooscuro = true;
+        } else {
+            
+            const all = document.querySelectorAll("*");
+            all.forEach(el => el.removeAttribute("style"));
+            modooscuro = false;
+
             }
         }
         function tamañoGrande() {
@@ -297,7 +382,7 @@
                 </div>
             </div>
         </div>
-    </div>\
+    </div>
 
         <!-- Sección Nosotros -->
     <div id="nosotros" class="row mt-5 pt-5 align-items-center">
