@@ -9,3 +9,15 @@ input[readonly] {
   background-color: #e9ecef; /* mismo gris que usa Bootstrap */
   cursor: not-allowed;
 }
+#divdeprueba button {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+#divdeprueba i {
+    transition: color 1s ease-in-out;
+}
+
+#divdeprueba i:hover {
+    color: #009688;
+}
