@@ -19,6 +19,7 @@ body {
     width: 90%;
     max-width: 1000px;
     text-align: center;
+    
 }
 h1 {
     font-weight: bold;
@@ -85,4 +86,18 @@ td {
 .footer {
     margin-top: 20px;
     font-size: 15px;
+}
+
+#divdeprueba button {
+    background-color: transparent;
+    border:none;
+    
+}
+
+#divdeprueba i {
+    transition: color 1s ease-in-out;
+}
+
+#divdeprueba i:hover {
+    color: #009688;
 }

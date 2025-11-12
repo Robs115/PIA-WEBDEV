@@ -8,12 +8,19 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/index/style.css' %}">
         <link rel="shortcut icon" href="{% static 'img/LogosPaginas/Login.png' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
+        
         <div class="container col-4">
-            <div class="bg-white border border-secondary mt-5 p-5 rounded">
-                <h1>Iniciar Sesion:</h1>
-
+            <div id="divis" class="bg-white border border-secondary mt-5 p-5 rounded">
+                <h1>Iniciar Sesion:</h1> 
+                <div id="divdeprueba">
+                    <button type="button" onclick="modoOscuro()"><i class="fa-solid fa-moon"></i></button>
+                    <i class="fa-solid fa-font"></i>:  
+                    <button type="button" onclick="tamañoGrande()"><i class="fa-solid fa-plus"></i></button>
+                    <button type="button" onclick="tamañoPequeño()"><i class="fa-solid fa-minus"></i></button>
+                </div>
                     <form method="post">
                         {% csrf_token %}
                         
@@ -39,6 +46,32 @@
             <div class="ms-3 mt-3">
             <a class="text" href="../"><button id="btnRegresarIndex" type="button" class="btn btn-secondary">Regresar a pagina principal</button></a>
             </div>
+            <!--Script para modo oscuro y letra-->
+        
+        <script>
+            let modooscuro = false;
+            function modoOscuro() {
+                if (!modooscuro) {
+                document.body.style.background = "black"
+                document.body.style.color = "white"
+                document.querySelector("#btnAccederDB")?.style.setProperty("background-color","#4DD0E1")
+                document.querySelector("#divis")?.style.setProperty("background-Color", "#000")
+                document.querySelector(".container.col-4").style.backgroundColor = "#000";
+                modooscuro = true
+                }
+                else {
+                const all = document.querySelectorAll("*");
+                all.forEach(el => el.removeAttribute("style"));
+                modooscuro = false;
+                }
+            }
+            function tamañoGrande () {
+                document.body.style.fontSize = "130%"
+            }
+            function tamañoPequeño() {
+                document.body.style.fontSize = "100%"
+            }
+        </script>
         </div>
         
     </body>
