@@ -17,11 +17,12 @@
         <h1>Lista de Citas Veterinarias</h1> 
 
         <div id="divdeprueba">
-        <button type="button" onclick="modoOscuro()"><i class="fa-solid fa-moon"></i></button>
-        <i class="fa-solid fa-font"></i>:  
-        <button type="button" onclick="tamañoGrande()"><i class="fa-solid fa-plus"></i></button>                
-        <button type="button" onclick="tamañoPequeño()"><i class="fa-solid fa-minus"></i></button>
+            <button type="button" onclick="modoOscuro()"><i class="fa-solid fa-moon"></i></button>
+            <i class="fa-solid fa-font"></i>:  
+            <button type="button" onclick="tamañoGrande()"><i class="fa-solid fa-plus"></i></button>                
+            <button type="button" onclick="tamañoPequeño()"><i class="fa-solid fa-minus"></i></button>
         </div>
+        
         
         
         <p>Bienvenido, <b>{{ user.username }}</b> 🐾</p>
@@ -93,7 +94,9 @@
                 document.querySelector(".content").style.color = "white";
                 document.querySelector(".content h1").style.color = "white";
                 document.querySelector(".content").style.boxShadow = "0 8px 25px rgba(255, 255, 255, 0.1)";
-
+                document.querySelectorAll("i").forEach(a=>{
+                    a.style.color="black"
+                })
                 // Tabla
                 document.querySelector("table").style.backgroundColor = "#1e1e1e";
 

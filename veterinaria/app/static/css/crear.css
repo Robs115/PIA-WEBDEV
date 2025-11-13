@@ -12,7 +12,13 @@
     border:none; 
 }
 
-
+#divdeprueba {
+    background-color: rgb(233, 233, 233); 
+    padding: 8px;
+    border-radius: 8px;
+    width:200px;
+    
+}
 
 
 #divdeprueba i {

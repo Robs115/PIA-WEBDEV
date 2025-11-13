@@ -17,7 +17,7 @@
                 <h1>Iniciar Sesion:</h1> 
                 <div id="divdeprueba">
                     <button type="button" onclick="modoOscuro()"><i class="fa-solid fa-moon"></i></button>
-                    <i class="fa-solid fa-font"></i>:  
+                    <i class="fa-solid fa-font icono"></i>:  
                     <button type="button" onclick="tamañoGrande()"><i class="fa-solid fa-plus"></i></button>
                     <button type="button" onclick="tamañoPequeño()"><i class="fa-solid fa-minus"></i></button>
                 </div>
@@ -57,6 +57,7 @@
                 document.querySelector("#btnAccederDB")?.style.setProperty("background-color","#4DD0E1")
                 document.querySelector("#divis")?.style.setProperty("background-Color", "#000")
                 document.querySelector(".container.col-4").style.backgroundColor = "#000";
+                document.querySelector(".icono")?.style.setProperty("color", "black")
                 modooscuro = true
                 }
                 else {

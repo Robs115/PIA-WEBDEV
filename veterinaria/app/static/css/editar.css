@@ -9,6 +9,15 @@ input[readonly] {
   background-color: #e9ecef; /* mismo gris que usa Bootstrap */
   cursor: not-allowed;
 }
+
+#divdeprueba {
+    background-color: rgb(255, 0, 0); 
+    padding: 8px;
+    border-radius: 8px;
+    width:200px;
+    
+}
+
 #divdeprueba button {
   background-color: transparent !important;
   border: none !important;

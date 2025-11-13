@@ -19,6 +19,7 @@ body {
     width: 90%;
     max-width: 1000px;
     text-align: center;
+    justify-content: center;
     
 }
 h1 {
@@ -88,9 +89,21 @@ td {
     font-size: 15px;
 }
 
+
+
+#divdeprueba {
+    background-color: rgb(233, 233, 233);
+    border-radius:5px 5px 5px 5px ;
+    width:200px;
+    margin:0 auto;
+    
+}
+
+
 #divdeprueba button {
     background-color: transparent;
     border:none;
+    
     
 }
 

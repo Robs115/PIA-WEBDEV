@@ -42,7 +42,7 @@
                 <li><a href="{% url 'login' %}">Iniciar Sesion</a></li>
                 <div id="divdeprueba">
                     <button type="button" onclick="modoOscuro()"><i class="fa-solid fa-moon"></i></button>
-                    <i class="fa-solid fa-font"></i>:  
+                    <i id="a" class="fa-solid fa-font"></i>:  
                     <button type="button" onclick="tamañoGrande()"><i class="fa-solid fa-plus"></i></button>
                     <button type="button" onclick="tamañoPequeño()"><i class="fa-solid fa-minus"></i></button>
                 </div>
@@ -74,6 +74,7 @@
             document.querySelectorAll("#indice ul li a").forEach(a => {
                 a.style.color = "#EDEDED";
             });
+            document.querySelector('#a')?.style.setProperty('color', "black");
 
             // TARJETAS DE SERVICIOS
             document.querySelectorAll(".card-servicio").forEach(card => {
@@ -136,8 +137,8 @@
             document.querySelector("#contacto button")?.style.setProperty("color", "#000");
 
             // FOOTER
-            document.querySelector(".footer")?.style.setProperty("background-color", "#1E1E1E");
-            document.querySelector(".footer")?.style.setProperty("color", "#f7f9fa");
+            document.querySelector(".footer")?.style.setProperty("background-color", "#4DD0E1");
+            document.querySelector(".footer")?.style.setProperty("color", "black");
 
             //Presentacion (no sirve aun)
             document.querySelector("#textoPres p")?.style.setProperty("color","#f0f0f0")
@@ -153,7 +154,7 @@
             const all = document.querySelectorAll("*:not(img):not(svg):not(path)");
             all.forEach(el => el.removeAttribute("style"));
 
-            document.querySelectorAll("i").forEach(icon => {
+            document.querySelectorAll(".icons").forEach(icon => {
                 icon.style.color = "#089688"; 
             });
             modooscuro = false;
@@ -177,7 +178,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div id="logoFA" class="col-md-3 text-center mt-1">
-                        <i class="fa-solid fa-heart-pulse fa-4x" style="color: #089688;"></i>
+                        <i class="fa-solid fa-heart-pulse fa-4x icons" style="color: #089688;"></i>
                     </div>
                     <div class="col-md-6 mt-1">
                     <p><b>Urgencias 24/7</b></p>
@@ -399,19 +400,19 @@
             </p>
             <hr class="text-white">
 
-            <h4 class="mt-4"><i class="fa-solid fa-heart" style="color: #089688;"></i> Misión</h4>
+            <h4 class="mt-4"><i class="fa-solid fa-heart icons" style="color: #089688;"></i> Misión</h4>
             <p>
                 Brindar atención veterinaria integral con calidez humana, profesionalismo y amor por los animales, 
                 asegurando su bienestar y tranquilidad para cada familia que confía en nosotros.
             </p>
 
-            <h4 class="mt-4"><i class="fa-solid fa-eye " style="color: #089688;"></i> Visión</h4>
+            <h4 class="mt-4"><i class="fa-solid fa-eye icons" style="color: #089688;"></i> Visión</h4>
             <p>
                 Ser la clínica veterinaria líder en Monterrey reconocida por su excelencia médica, innovación y compromiso 
                 con la vida animal.
             </p>
 
-            <h4 class="mt-4"><i class="fa-solid fa-scale-balanced" style="color: #089688;"></i> Valores</h4>
+            <h4 class="mt-4"><i class="fa-solid fa-scale-balanced icons" style="color: #089688;"></i> Valores</h4>
             <ul>
                 <li>Empatía y respeto hacia cada ser vivo.</li>
                 <li>Compromiso y responsabilidad profesional.</li>
@@ -553,52 +554,7 @@
 
         </div> 
     </div> 
-    <!--
-    <div class="row mt-2">
-        <div id="accesidibilidad" class="col-6">
-            <h3>Mejora visual:</h3>
-        <div class="m-4">
-
-            Cambiar tamaño del texto: <button class="btn btn-outline-secondary" onclick="aumentartamaño()">➖ </button>
-            <button  class="btn-outline-secondary" onclick="disminuirtamaño()">➕</button>
-            <script>
-                let tamañodeltexto = '2000';
-                function aumentartamaño () {
-                    tamañodeltexto=+2;
-                    document.body.style.fontSize = tamañodeltexto + 'px';
-                }
-
-                function disminuirtamaño () {
-                    document.body.style.background = 'black';
-                }
-            </script>
-        </div>
-
-        <div class="m-4">
-            Cambiar modo oscuro: <button class="btn btn-outline-secondary" onclick="modoOscuro()">🌙</button>
-
-            <script>
-                let modooscuro = false;
-                function modoOscuro() {
-                    
-                    if (!modooscuro) {
-                        document.body.style.backgroundColor = "black";
-                        document.body.style.color="white";
-                        modooscuro = true;
-                    } else {
-                        document.body.style.backgroundColor = "white";
-                        document.body.style.color="black";
-                        modooscuro = false;
-                        
-                    }
-                }
-            </script>
-
-        </div>
-        
-        </div>
-    </div>
--->
+    
     <div class="footer mt-4">
         
         <div class="col"><p>2025 VivaVet -- Todos los derechos reservados.</p></div>
