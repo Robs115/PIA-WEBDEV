@@ -150,8 +150,12 @@
             modooscuro = true;
         } else {
             
-            const all = document.querySelectorAll("*");
+            const all = document.querySelectorAll("*:not(img):not(svg):not(path)");
             all.forEach(el => el.removeAttribute("style"));
+
+            document.querySelectorAll("i").forEach(icon => {
+                icon.style.color = "#089688"; 
+            });
             modooscuro = false;
 
             }
